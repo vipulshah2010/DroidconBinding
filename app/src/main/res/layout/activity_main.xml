@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="age"
+            type="Integer" />
+
+        <variable
+            name="countries"
+            type="String[]" />
+
+        <variable
+            name="persons"
+            type="Person[]" />
+
+        <variable
+            name="listener"
+            type="calculator.com.droidconbinding.MainActivity.Listener" />
+
+        <import type="calculator.com.droidconbinding.Person" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="calculator.com.droidconbinding.MainActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{persons[0].name ?? "No Name"}'
+            android:textColor="@{age > 10 ? @android:color/holo_red_dark:@android:color/holo_green_dark}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{""+(age * age)}'
+            android:textColor="@{age > 10 ? @android:color/holo_red_dark:@android:color/holo_green_dark}" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:entries="@{persons}" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src='@{"http://www.just5.com/content/img/android.png"}'
+            app:error="@null"
+            app:placeholder="@null" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{listener.incrementNumber}"
+            android:text="Increment Number" />
+
+    </LinearLayout>
+</layout>
